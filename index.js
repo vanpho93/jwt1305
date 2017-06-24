@@ -38,3 +38,4 @@ app.post('/check', jsonParser, (req, res) => {
 app.listen(3000, () => console.log('Server started!'));
 
 //khoapham123
+//VIDEO: https://youtu.be/scJebYRc1PY
