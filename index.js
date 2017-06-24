@@ -11,6 +11,13 @@ app.use(express.static('public'));
 app.get('/', (req, res) => res.render('home'));
 
 //route dang ky
+app.post('/signup', jsonParser, (req, res) => {
+    const { email, password, name, phone } = req.body;
+    const user = new User(email, password, name, phone);
+    user.signUp()
+    .then(() => res.send('THANH_CONG'))
+    .catch(err => res.send('THAT_BAI'));
+});
 
 //route dang nhap
 app.post('/signin', jsonParser, (req, res) => {
