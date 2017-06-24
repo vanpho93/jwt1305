@@ -29,5 +29,7 @@ function getToken(obj) {
 // .then(token => console.log(token))
 // .catch(err => console.log(err.toString()));
 
-getObject('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiJUaGFuaCBjb25nIiwiaWF0IjoxNDk4Mjc0MjE4LCJleHAiOjE0OTgyNzkyMTh9.W6Alu9M_iVtK6gU9PY0EPPZ-mvsIC5WcLT57YW9FjFw')
-.then(obj => console.log(obj));
+// getObject('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiJUaGFuaCBjb25nIiwiaWF0IjoxNDk4Mjc0MjE4LCJleHAiOjE0OTgyNzkyMTh9.W6Alu9M_iVtK6gU9PY0EPPZ-mvsIC5WcLT57YW9FjFw')
+// .then(obj => console.log(obj));
+
+module.exports = { getObject, getToken };  
