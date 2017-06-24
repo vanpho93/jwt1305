@@ -1,5 +1,6 @@
 const queryDB = require('./db');
 const { hash, compare } = require('bcrypt');
+const { getObject, getToken } = require('./jwt');
 
 class User {
     constructor(email, password, name, phone) {
@@ -22,6 +23,10 @@ class User {
         })
         .then(same => {
             if (!same) throw new Error('Sai mat khau');
+        })
+        .then(() => getToken(userInfo))
+        .then(token => {
+            userInfo.token = token;
             return userInfo;
         });
     }
