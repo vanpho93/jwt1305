@@ -24,3 +24,7 @@ function queryDB(sql, arrValue) {
 }
 
 module.exports = queryDB;
+
+// queryDB('SELECT * FROM "User"', [])
+// .then(result => console.log(result))
+// .catch(err => console.log(err.toString()));
