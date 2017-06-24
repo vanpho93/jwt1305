@@ -10,7 +10,20 @@ class User {
     }
 
     signIn() {
-
+        const sql = 'SELECT * FROM "User" WHERE email = $1';
+        let userInfo;
+        return queryDB(sql, [this.email])
+        .then(result => {
+            if (!result.rows[0]) throw new Error('Email khong ton tai');
+            const encrypted = result.rows[0].password;
+            const { email, phone, name } = result.rows[0];
+            userInfo = { email, phone, name };
+            return compare(this.password, encrypted);
+        })
+        .then(same => {
+            if (!same) throw new Error('Sai mat khau');
+            return userInfo;
+        });
     }
 
     signUp() {
@@ -22,4 +35,8 @@ class User {
     }
 }
 
-const user = new User('vanpho01@gmail.com', '123', 'Pho Nguyen', '01694472176');
+const user = new User('vanpho01@gmail.com', '123');
+
+user.signIn()
+.then(userInfo => console.log(userInfo))
+.catch(err => console.log(err.toString()));
