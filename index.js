@@ -28,6 +28,12 @@ app.post('/signin', jsonParser, (req, res) => {
     .catch(err => res.send({ error: 'LOI_DANG_NHAP' }));
 });
 
+app.post('/check', jsonParser, (req, res) => {
+    const { token } = req.body;
+    User.getUserFromToken(token)
+    .then(userInfo => res.send(userInfo))
+    .catch(err => res.send({ err: err.toString() }));
+});
 
 app.listen(3000, () => console.log('Server started!'));
 
