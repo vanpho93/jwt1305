@@ -10,6 +10,20 @@ class User {
         this.phone = phone;
     }
 
+    static getUserFromToken(token) {
+        let userInfo;
+        return getObject(token)
+        .then(obj => {
+            const { email, phone, name } = obj;
+            userInfo = { email, phone, name };
+            return getToken(userInfo);
+        })
+        .then(token => {
+            userInfo.token = token;
+            return userInfo;
+        });
+    }
+
     signIn() {
         const sql = 'SELECT * FROM "User" WHERE email = $1';
         let userInfo;
@@ -41,3 +55,4 @@ class User {
 }
 
 module.exports = User;
+
