@@ -35,8 +35,4 @@ class User {
     }
 }
 
-const user = new User('vanpho01@gmail.com', '123');
-
-user.signIn()
-.then(userInfo => console.log(userInfo))
-.catch(err => console.log(err.toString()));
+module.exports = User;
